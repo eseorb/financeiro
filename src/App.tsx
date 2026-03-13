@@ -274,19 +274,10 @@ export default function App() {
         {/* Header */}
         <header className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-white">AutomatizadorComprovante</h1>
-            <p className="text-slate-400">Automação de processamento e renomeação de comprovantes</p>
+            <h1 className="text-3xl font-bold tracking-tight text-white">Easy Proof</h1>
+            <p className="text-slate-400">Automatizador | Hélio Filho</p>
           </div>
           <div className="flex gap-2">
-            {files.length > 0 && !isProcessing && (
-              <button 
-                onClick={() => setShowClearConfirm(true)}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-800 text-slate-400 hover:bg-slate-900 hover:text-white transition-all text-sm font-medium"
-              >
-                <Trash2 size={18} />
-                Limpar Lista
-              </button>
-            )}
           </div>
         </header>
 
@@ -379,6 +370,15 @@ export default function App() {
               </div>
 
               <div className="flex gap-3">
+                {files.length > 0 && !isProcessing && (
+                  <button 
+                    onClick={() => setShowClearConfirm(true)}
+                    className="flex items-center gap-2 px-4 py-2.5 rounded-lg border border-slate-800 text-slate-400 hover:bg-slate-900 hover:text-white transition-all text-sm font-medium"
+                  >
+                    <Trash2 size={18} />
+                    Limpar
+                  </button>
+                )}
                 <button
                   disabled={isProcessing || stats.total === 0}
                   onClick={startProcessing}
