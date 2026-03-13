@@ -269,19 +269,19 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 text-neutral-900 font-sans p-4 md:p-8">
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans p-4 md:p-8 selection:bg-emerald-500/30">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <header className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold tracking-tight text-neutral-900">AutoFinance PDF</h1>
-            <p className="text-neutral-500">Automação de processamento e renomeação de comprovantes</p>
+            <h1 className="text-3xl font-bold tracking-tight text-white">AutomatizadorComprovante</h1>
+            <p className="text-slate-400">Automação de processamento e renomeação de comprovantes</p>
           </div>
           <div className="flex gap-2">
             {files.length > 0 && !isProcessing && (
               <button 
                 onClick={() => setShowClearConfirm(true)}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-neutral-200 hover:bg-neutral-100 transition-colors text-sm font-medium"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-800 text-slate-400 hover:bg-slate-900 hover:text-white transition-all text-sm font-medium"
               >
                 <Trash2 size={18} />
                 Limpar Lista
@@ -293,21 +293,21 @@ export default function App() {
         {/* Clear Confirmation Modal */}
         <AnimatePresence>
           {showClearConfirm && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-md">
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="bg-white rounded-2xl shadow-2xl w-full max-w-sm p-6"
+                className="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl w-full max-w-sm p-6"
               >
-                <h3 className="text-lg font-bold mb-2">Limpar Lista?</h3>
-                <p className="text-neutral-500 mb-6">
+                <h3 className="text-lg font-bold mb-2 text-white">Limpar Lista?</h3>
+                <p className="text-slate-400 mb-6">
                   Você tem certeza que deseja excluir todos os comprovantes da lista? Esta ação não pode ser desfeita.
                 </p>
                 <div className="flex gap-3">
                   <button 
                     onClick={() => setShowClearConfirm(false)}
-                    className="flex-1 px-4 py-2 rounded-lg border border-neutral-200 hover:bg-neutral-100 transition-colors font-medium"
+                    className="flex-1 px-4 py-2 rounded-lg border border-slate-800 text-slate-300 hover:bg-slate-800 transition-colors font-medium"
                   >
                     Cancelar
                   </button>
@@ -347,34 +347,34 @@ export default function App() {
             />
             <div 
               onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-neutral-300 rounded-2xl p-12 flex flex-col items-center justify-center gap-4 bg-white hover:border-emerald-500 hover:bg-emerald-50/30 transition-all cursor-pointer"
+              className="border-2 border-dashed border-slate-800 rounded-2xl p-12 flex flex-col items-center justify-center gap-4 bg-slate-900/30 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all cursor-pointer group"
             >
-              <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-transform">
                 <Upload size={32} />
               </div>
               <div className="text-center">
-                <p className="text-lg font-semibold">Arraste seus PDFs aqui</p>
-                <p className="text-neutral-500">ou clique para selecionar arquivos do seu computador</p>
+                <p className="text-lg font-semibold text-white">Arraste seus PDFs aqui</p>
+                <p className="text-slate-400">ou clique para selecionar arquivos do seu computador</p>
               </div>
-              <p className="text-xs text-neutral-400 uppercase tracking-widest font-bold">Apenas arquivos PDF</p>
+              <p className="text-xs text-slate-500 uppercase tracking-widest font-bold">Apenas arquivos PDF</p>
             </div>
           </section>
 
           {/* Action Bar */}
           {files.length > 0 && (
-            <section className="flex flex-wrap items-center justify-between gap-4 bg-white p-4 rounded-xl border border-neutral-200 shadow-sm">
+            <section className="flex flex-wrap items-center justify-between gap-4 bg-slate-900 p-4 rounded-xl border border-slate-800 shadow-xl">
               <div className="flex items-center gap-6">
                 <div className="flex flex-col">
-                  <span className="text-xs text-neutral-400 uppercase font-bold tracking-tighter">Total</span>
-                  <span className="text-xl font-bold">{stats.total}</span>
+                  <span className="text-xs text-slate-500 uppercase font-bold tracking-tighter">Total</span>
+                  <span className="text-xl font-bold text-white">{stats.total}</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs text-neutral-400 uppercase font-bold tracking-tighter">Concluídos</span>
-                  <span className="text-xl font-bold text-emerald-600">{stats.processed}</span>
+                  <span className="text-xs text-slate-500 uppercase font-bold tracking-tighter">Concluídos</span>
+                  <span className="text-xl font-bold text-emerald-500">{stats.processed}</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs text-neutral-400 uppercase font-bold tracking-tighter">Erros</span>
-                  <span className="text-xl font-bold text-rose-600">{stats.errors}</span>
+                  <span className="text-xs text-slate-500 uppercase font-bold tracking-tighter">Erros</span>
+                  <span className="text-xl font-bold text-rose-500">{stats.errors}</span>
                 </div>
               </div>
 
@@ -382,7 +382,7 @@ export default function App() {
                 <button
                   disabled={isProcessing || stats.total === 0}
                   onClick={startProcessing}
-                  className="flex items-center gap-2 bg-neutral-900 text-white px-6 py-2.5 rounded-lg hover:bg-neutral-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium"
+                  className="flex items-center gap-2 bg-white text-slate-950 px-6 py-2.5 rounded-lg hover:bg-slate-200 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold"
                 >
                   <Play size={18} fill="currentColor" />
                   Iniciar Processamento
@@ -391,7 +391,7 @@ export default function App() {
                 {stats.processed > 0 && (
                   <button
                     onClick={downloadAll}
-                    className="flex items-center gap-2 bg-emerald-600 text-white px-6 py-2.5 rounded-lg hover:bg-emerald-700 transition-all font-medium"
+                    className="flex items-center gap-2 bg-emerald-600 text-white px-6 py-2.5 rounded-lg hover:bg-emerald-700 transition-all font-bold shadow-lg shadow-emerald-900/20"
                   >
                     <FileArchive size={18} />
                     Baixar Todos (ZIP)
@@ -411,23 +411,23 @@ export default function App() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  className="bg-white border border-neutral-200 rounded-xl p-4 flex items-center justify-between group hover:shadow-md transition-all"
+                  className="bg-slate-900 border border-slate-800 rounded-xl p-4 flex items-center justify-between group hover:border-slate-700 hover:bg-slate-800/50 transition-all"
                 >
                   <div className="flex items-center gap-4 flex-1 min-w-0">
                     <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${
-                      file.status === FileStatus.COMPLETED ? 'bg-emerald-100 text-emerald-600' :
-                      file.status === FileStatus.ERROR ? 'bg-rose-100 text-rose-600' :
-                      file.status === FileStatus.PROCESSING ? 'bg-blue-100 text-blue-600' :
-                      'bg-neutral-100 text-neutral-500'
+                      file.status === FileStatus.COMPLETED ? 'bg-emerald-500/10 text-emerald-500' :
+                      file.status === FileStatus.ERROR ? 'bg-rose-500/10 text-rose-500' :
+                      file.status === FileStatus.PROCESSING ? 'bg-blue-500/10 text-blue-500' :
+                      'bg-slate-800 text-slate-500'
                     }`}>
                       {file.status === FileStatus.PROCESSING ? <Loader2 className="animate-spin" size={20} /> : <FileText size={20} />}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium truncate text-neutral-900">
+                      <p className="font-medium truncate text-slate-100">
                         {file.newName || file.file.name}
                       </p>
                       <div className="flex items-center gap-3 mt-1">
-                        <span className="text-xs text-neutral-400">{(file.file.size / 1024).toFixed(1)} KB</span>
+                        <span className="text-xs text-slate-500">{(file.file.size / 1024).toFixed(1)} KB</span>
                         {file.status === FileStatus.ERROR && (
                           <span className="text-xs text-rose-500 flex items-center gap-1 font-medium">
                             <AlertCircle size={12} />
@@ -435,7 +435,7 @@ export default function App() {
                           </span>
                         )}
                         {file.status === FileStatus.COMPLETED && (
-                          <span className="text-xs text-emerald-600 flex items-center gap-1 font-medium">
+                          <span className="text-xs text-emerald-500 flex items-center gap-1 font-medium">
                             <CheckCircle2 size={12} />
                             Processado com sucesso
                           </span>
@@ -448,7 +448,7 @@ export default function App() {
                     {file.status === FileStatus.COMPLETED && (
                       <button 
                         onClick={() => downloadSingle(file)}
-                        className="p-2 rounded-lg hover:bg-emerald-50 text-emerald-600 transition-colors"
+                        className="p-2 rounded-lg hover:bg-emerald-500/10 text-emerald-500 transition-colors"
                         title="Baixar arquivo renomeado"
                       >
                         <Download size={20} />
@@ -457,7 +457,7 @@ export default function App() {
                     {!isProcessing && (
                       <button 
                         onClick={() => removeFile(file.id)}
-                        className="p-2 rounded-lg hover:bg-rose-50 text-neutral-400 hover:text-rose-600 transition-colors"
+                        className="p-2 rounded-lg hover:bg-rose-500/10 text-slate-500 hover:text-rose-500 transition-colors"
                         title="Remover da lista"
                       >
                         <Trash2 size={20} />
@@ -469,8 +469,8 @@ export default function App() {
             </AnimatePresence>
 
             {files.length === 0 && (
-              <div className="text-center py-20 bg-neutral-50 rounded-2xl border-2 border-dashed border-neutral-200">
-                <p className="text-neutral-400">Nenhum arquivo carregado ainda.</p>
+              <div className="text-center py-20 bg-slate-900/20 rounded-2xl border-2 border-dashed border-slate-800">
+                <p className="text-slate-500">Nenhum arquivo carregado ainda.</p>
               </div>
             )}
           </section>
@@ -479,17 +479,17 @@ export default function App() {
         {/* Progress Modal */}
         <AnimatePresence>
           {showProgressModal && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/60 backdrop-blur-md">
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8"
+                className="bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl w-full max-w-md p-8"
               >
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-xl font-bold">Processando Arquivos</h3>
+                  <h3 className="text-xl font-bold text-white">Processando Arquivos</h3>
                   {isProcessing ? (
-                    <Loader2 className="animate-spin text-neutral-400" size={24} />
+                    <Loader2 className="animate-spin text-slate-500" size={24} />
                   ) : (
                     <CheckCircle2 className="text-emerald-500" size={24} />
                   )}
@@ -497,30 +497,30 @@ export default function App() {
 
                 <div className="space-y-6">
                   <div className="flex justify-between text-sm font-medium">
-                    <span className="text-neutral-500">Progresso Geral</span>
-                    <span>{stats.processed + stats.errors} / {stats.total}</span>
+                    <span className="text-slate-400">Progresso Geral</span>
+                    <span className="text-white">{stats.processed + stats.errors} / {stats.total}</span>
                   </div>
                   
-                  <div className="w-full h-3 bg-neutral-100 rounded-full overflow-hidden">
+                  <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
                     <motion.div 
-                      className="h-full bg-emerald-500"
+                      className="h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
                       initial={{ width: 0 }}
                       animate={{ width: `${((stats.processed + stats.errors) / stats.total) * 100}%` }}
                     />
                   </div>
 
                   <div className="grid grid-cols-3 gap-4 text-center">
-                    <div className="bg-neutral-50 p-3 rounded-xl">
-                      <p className="text-xs text-neutral-400 uppercase font-bold mb-1">Total</p>
-                      <p className="text-xl font-bold">{stats.total}</p>
+                    <div className="bg-slate-800/50 p-3 rounded-xl border border-slate-800">
+                      <p className="text-xs text-slate-500 uppercase font-bold mb-1">Total</p>
+                      <p className="text-xl font-bold text-white">{stats.total}</p>
                     </div>
-                    <div className="bg-emerald-50 p-3 rounded-xl">
-                      <p className="text-xs text-emerald-600 uppercase font-bold mb-1">Sucesso</p>
-                      <p className="text-xl font-bold text-emerald-700">{stats.processed}</p>
+                    <div className="bg-emerald-500/5 p-3 rounded-xl border border-emerald-500/10">
+                      <p className="text-xs text-emerald-500 uppercase font-bold mb-1">Sucesso</p>
+                      <p className="text-xl font-bold text-emerald-500">{stats.processed}</p>
                     </div>
-                    <div className="bg-rose-50 p-3 rounded-xl">
-                      <p className="text-xs text-rose-600 uppercase font-bold mb-1">Erro</p>
-                      <p className="text-xl font-bold text-rose-700">{stats.errors}</p>
+                    <div className="bg-rose-500/5 p-3 rounded-xl border border-rose-500/10">
+                      <p className="text-xs text-rose-500 uppercase font-bold mb-1">Erro</p>
+                      <p className="text-xl font-bold text-rose-500">{stats.errors}</p>
                     </div>
                   </div>
 
@@ -536,7 +536,7 @@ export default function App() {
                     ) : (
                       <button 
                         onClick={() => setShowProgressModal(false)}
-                        className="w-full bg-neutral-900 text-white py-3 rounded-xl hover:bg-neutral-800 transition-all font-bold"
+                        className="w-full bg-white text-slate-950 py-3 rounded-xl hover:bg-slate-200 transition-all font-bold"
                       >
                         Fechar e Ver Resultados
                       </button>
